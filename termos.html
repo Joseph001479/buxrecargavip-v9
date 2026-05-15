@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso | Robux VIP</title>
+  <meta name="description" content="Termos de uso da Robux VIP.">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .politica-section { padding: 120px 0 60px; }
+    .politica-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+    .politica-container h1 { font-size: 2rem; color: var(--gold); margin-bottom: 30px; text-align: center; }
+    .politica-container h2 { font-size: 1.2rem; color: var(--white); margin: 30px 0 15px; }
+    .politica-container p, .politica-container li { color: var(--muted); line-height: 1.8; margin-bottom: 12px; }
+    .politica-container ul { padding-left: 20px; margin-bottom: 20px; }
+    .politica-container li { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar" style="position:fixed; top:0; width:100%; z-index:1000;">
+  <div class="topbar-inner" style="animation: none; gap: 20px;">
+    <span>⚡ ENTREGA AUTOMÁTICA 24H</span>
+    <span>🔒 PAGAMENTO 100% SEGURO</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" style="position: fixed; top: 36px; left: 0; width: 100%; z-index: 999; background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);">
+  <div class="header-inner" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; max-width: 1220px; margin: 0 auto;">
+    <div class="header-logo" style="display: flex; align-items: center; gap: 10px;">
+      <a href="index.html"><img src="assets/logo.jpg" alt="Robux VIP" style="height: 46px; border-radius: 10px;"></a>
+      <a href="index.html" class="header-logo-text" style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:900; color:var(--gold);">ROBUX<span style="color:var(--white);">VIP</span></a>
+    </div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <!-- 🌓 TOGGLE TEMA -->
+      <button class="theme-toggle" id="themeToggle" onclick="alternarTema()" aria-label="Alternar tema" title="Alternar tema claro/escuro" style="width:38px;height:38px;border-radius:50%;background:var(--surface3);border:1px solid var(--border);color:var(--gold);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.25s;flex-shrink:0;">
+        <i class="fas fa-sun" id="themeIconSun"></i>
+        <i class="fas fa-moon" id="themeIconMoon" style="display:none;"></i>
+      </button>
+      <a href="index.html" style="background:var(--gold); color:var(--black); font-family:'Barlow Condensed',sans-serif; font-weight:800; padding:9px 22px; border-radius:50px; font-size:0.88rem;">VOLTAR PARA LOJA</a>
+    </div>
+  </div>
+</header>
+
+<section class="politica-section">
+  <div class="politica-container">
+    <h1>Termos de Uso</h1>
+    <p>Última atualização: Janeiro de 2025</p>
+    
+    <h2>1. Aceitação dos Termos</h2>
+    <p>Ao acessar e usar o site Robux VIP, você concorda com estes Termos de Uso. Se não concordar, não utilize nossos serviços.</p>
+    
+    <h2>2. Descrição do Serviço</h2>
+    <p>A Robux VIP atua como intermediária na venda de gift cards digitais de Robux para o jogo Roblox®. Não somos afiliados à Roblox Corporation.</p>
+    
+    <h2>3. Compras e Pagamentos</h2>
+    <ul>
+      <li>Todos os preços estão em Reais (R$).</li>
+      <li>O pagamento é processado via PIX através da SkalePay.</li>
+      <li>O produto digital é entregue automaticamente após confirmação do pagamento.</li>
+    </ul>
+    
+    <h2>4. Entrega</h2>
+    <p>O gift card é enviado para o e-mail cadastrado no momento da compra. O prazo de entrega é de até 5 minutos após a confirmação do PIX.</p>
+    
+    <h2>5. Reembolso</h2>
+    <p>Consulte nossa Política de Reembolso para informações detalhadas.</p>
+    
+    <h2>6. Contato</h2>
+    <p>Dúvidas? Fale conosco pelo Instagram @robuxpremium ou e-mail suporte@recargabuxofc.com.</p>
+  </div>
+</section>
+
+<!-- TEMA CLARO/ESCURO -->
+<script>
+(function() {
+  const temaSalvo = localStorage.getItem('tema');
+  if (temaSalvo === 'claro') {
+    document.body.classList.add('tema-claro');
+    document.getElementById('themeIconSun').style.display = 'none';
+    document.getElementById('themeIconMoon').style.display = 'inline-block';
+  }
+})();
+
+function alternarTema() {
+  const body = document.body;
+  const iconSun = document.getElementById('themeIconSun');
+  const iconMoon = document.getElementById('themeIconMoon');
+
+  if (body.classList.contains('tema-claro')) {
+    body.classList.remove('tema-claro');
+    iconSun.style.display = 'inline-block';
+    iconMoon.style.display = 'none';
+    localStorage.setItem('tema', 'escuro');
+  } else {
+    body.classList.add('tema-claro');
+    iconSun.style.display = 'none';
+    iconMoon.style.display = 'inline-block';
+    localStorage.setItem('tema', 'claro');
+  }
+}
+</script>
+
+</body>
+</html>

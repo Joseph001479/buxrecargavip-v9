@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robux VIP | Entrega Imediata — Menor Preço Garantido</title>
+  <meta name="description" content="Compre Robux com o menor preço do Brasil. Entrega automática via e-mail, pagamento seguro via PIX. Mais de 5.000 clientes satisfeitos.">
+
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+
+  <script async src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+  ></script>
+
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=SEU_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXX');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loadingScreen">
+  <div class="ls-logo">R</div>
+  <div class="ls-bar-wrap"><div class="ls-bar" id="lsBar"></div></div>
+  <div class="ls-txt">CARREGANDO...</div>
+</div>
+
+<!-- FLASH -->
+<div id="flashOverlay"></div>
+
+<!-- NOTIFICAÇÃO DE VENDAS -->
+<div id="notificacaoVenda" class="notificacao-venda">
+  <div class="notificacao-img">🛒</div>
+  <div class="notificacao-info">
+    <span class="notificacao-nome" id="notificacaoNome"></span>
+    <span class="notificacao-acao">comprou <strong id="notificacaoProduto"></strong></span>
+    <span class="notificacao-tempo" id="notificacaoTempo"></span>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>⚡ ENTREGA AUTOMÁTICA 24H</span><span>•</span>
+    <span>🔒 PAGAMENTO 100% SEGURO VIA PIX</span><span>•</span>
+    <span>✅ MENOR PREÇO GARANTIDO</span><span>•</span>
+    <span>🎮 +5.000 CLIENTES SATISFEITOS</span><span>•</span>
+    <span>⚡ ENTREGA AUTOMÁTICA 24H</span><span>•</span>
+    <span>🔒 PAGAMENTO 100% SEGURO VIA PIX</span><span>•</span>
+    <span>✅ MENOR PREÇO GARANTIDO</span><span>•</span>
+    <span>🎮 +5.000 CLIENTES SATISFEITOS</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <img src="assets/logo.jpg" alt="Robux VIP">
+      <a href="index.html" class="header-logo-text">ROBUX<span>VIP</span></a>
+    </div>
+
+    <div class="search-wrap" id="searchWrap">
+      <input type="text" class="search-input" id="searchInput" placeholder="Buscar pacotes de Robux..." autocomplete="off">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" onclick="alternarTema()" aria-label="Alternar tema" title="Alternar tema claro/escuro">
+        <i class="fas fa-sun" id="themeIconSun"></i>
+        <i class="fas fa-moon" id="themeIconMoon" style="display:none;"></i>
+      </button>
+      <a href="https://instagram.com" target="_blank" class="btn-suporte">
+        <i class="fab fa-instagram"></i> Suporte
+      </a>
+      <button class="btn-comprar-header" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+        VER PACOTES
+      </button>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- BANNER -->
+<section class="banner-section">
+  <div class="banner-img-wrap">
+    <img src="assets/roblox-banner.jpg" alt="Robux VIP — Melhor Preço">
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><i class="fas fa-shield-alt"></i><span><strong>Compra 100% Segura</strong></span></div>
+    <div class="trust-item"><i class="fas fa-bolt"></i><span><strong>Entrega Imediata</strong></span></div>
+    <div class="trust-item"><i class="fas fa-medal"></i><span><strong>Menor Preço Garantido</strong></span></div>
+    <div class="trust-item"><i class="fas fa-headset"></i><span><strong>Suporte 24h</strong></span></div>
+    <div class="trust-item"><i class="fas fa-undo"></i><span><strong>Reembolso Garantido</strong></span></div>
+  </div>
+</div>
+
+<!-- PRODUTOS -->
+<section class="products-section" id="produtos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">PACOTES DISPONÍVEIS</div>
+      <h2 class="section-title">ESCOLHA SEU PACOTE <span>ROBUX</span></h2>
+      <p class="section-sub">Entrega automática via e-mail após confirmação do PIX</p>
+      <div class="cupom-bar" id="cupomBar">
+        <i class="fas fa-ticket-alt"></i>
+        <span>CUPOM: <strong>PRIMEIRO5</strong> — 5% OFF na sua primeira compra!</span>
+        <button onclick="copiarCupom()" class="cupom-btn">COPIAR</button>
+      </div>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- 700 Robux -->
+      <div class="product-card destaque">
+        <div class="card-badge">MAIS VENDIDO</div>
+        <div class="card-img-wrap">
+          <img src="assets/700-1.png" alt="700 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">700 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>(248)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 27,90</span>
+            <span class="card-price-new">R$ 18,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 9,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('700','18.90','700 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+      <!-- 1200 Robux -->
+      <div class="product-card destaque">
+        <div class="card-badge">OFERTA</div>
+        <div class="card-img-wrap">
+          <img src="assets/1200-min-1.png" alt="1200 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">1.200 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(312)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 39,90</span>
+            <span class="card-price-new">R$ 29,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 10,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('1200','29.90','1.200 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+      <!-- 1700 Robux -->
+      <div class="product-card">
+        <div class="card-badge">ECONÔMICO</div>
+        <div class="card-img-wrap">
+          <img src="assets/1700-min.png" alt="1700 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">1.700 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>(187)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 59,90</span>
+            <span class="card-price-new">R$ 44,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 15,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('1700','44.90','1.700 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+      <!-- 2100 Robux -->
+      <div class="product-card">
+        <div class="card-badge">POPULAR</div>
+        <div class="card-img-wrap">
+          <img src="assets/2100-min.png" alt="2100 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">2.100 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>(276)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 79,90</span>
+            <span class="card-price-new">R$ 59,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 20,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('2100','59.90','2.100 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+      <!-- 3600 Robux -->
+      <div class="product-card">
+        <div class="card-badge">SUPER</div>
+        <div class="card-img-wrap">
+          <img src="assets/3600-min.png" alt="3600 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">3.600 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(198)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 129,90</span>
+            <span class="card-price-new">R$ 99,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 30,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('3600','99.90','3.600 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+      <!-- 4500 Robux -->
+      <div class="product-card destaque">
+        <div class="card-badge">MEGA</div>
+        <div class="card-img-wrap">
+          <img src="assets/4500-min.png" alt="4500 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">4.500 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>(156)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 159,90</span>
+            <span class="card-price-new">R$ 129,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 30,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('4500','129.90','4.500 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+      <!-- 7000 Robux -->
+      <div class="product-card">
+        <div class="card-badge">ULTRA</div>
+        <div class="card-img-wrap">
+          <img src="assets/7000-min.png" alt="7000 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">7.000 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>(132)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 249,90</span>
+            <span class="card-price-new">R$ 199,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 50,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('7000','199.90','7.000 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+      <!-- 10000 Robux -->
+      <div class="product-card">
+        <div class="card-badge">PREMIUM</div>
+        <div class="card-img-wrap">
+          <img src="assets/10000-min.png" alt="10000 Robux" class="card-img floating">
+        </div>
+        <div class="card-info">
+          <div class="card-name">10.000 ROBUX</div>
+          <div class="card-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(89)</span>
+          </div>
+          <div class="card-price">
+            <span class="card-price-old">R$ 349,90</span>
+            <span class="card-price-new">R$ 299,90</span>
+          </div>
+          <div class="card-economia">💰 Economize R$ 50,00</div>
+          <button class="btn-comprar" onclick="flashComprar(event);abrirCheckout('10000','299.90','10.000 Robux')">
+            <i class="fas fa-bolt"></i> COMPRAR AGORA
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depoimentos-section" id="depoimentos">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">CLIENTES SATISFEITOS</div>
+      <h2 class="section-title">O QUE DIZEM <span>NOSSOS CLIENTES</span></h2>
+    </div>
+    <div class="depoimentos-carrossel-wrap">
+      <div class="depoimentos-track" id="depoimentosTrack">
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Comprei 700 Robux e chegou em menos de 1 minuto! Preço muito melhor que na loja oficial. Recomendo!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">L</div>
+            <div><strong>Lucas S.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Já comprei 3 vezes, sempre entrega rápida. O suporte pelo Instagram é muito atencioso!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">M</div>
+            <div><strong>Marina C.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Achei que era golpe pelo preço baixo, mas arrisquei e deu super certo. Melhor site de Robux!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">P</div>
+            <div><strong>Pedro H.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Presenteei meu filho com 2.100 Robux. Entrega foi instantânea e ele ficou muito feliz!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">A</div>
+            <div><strong>Ana J.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Melhor preço do Brasil! Já comparei com todas as outras lojas e aqui é imbatível."</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">R</div>
+            <div><strong>Rafael M.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Tive dúvida e o suporte respondeu em 2 minutos no Instagram. Atendimento nota 10!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">J</div>
+            <div><strong>Julia B.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Comprei 10.000 Robux e deu tudo certo. Site confiável, voltarei sempre!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">B</div>
+            <div><strong>Bruno A.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Primeira compra usei cupom PRIMEIRO5 e ganhei desconto. Sensacional!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">C</div>
+            <div><strong>Carla D.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+        <div class="depoimento-card">
+          <div class="depoimento-stars">⭐⭐⭐⭐⭐</div>
+          <p class="depoimento-text">"Recomendo pra todo mundo que joga Roblox. Preço justo e entrega na hora!"</p>
+          <div class="depoimento-autor">
+            <div class="depoimento-avatar">G</div>
+            <div><strong>Gabriel F.</strong><span>Compra verificada ✅</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="benefits-section" id="beneficios">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">POR QUE ESCOLHER A GENTE</div>
+      <h2 class="section-title">COMPRA <span>SEGURA</span> E RÁPIDA</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-lock"></i></div>
+        <h3 class="benefit-title">PAGAMENTO SEGURO</h3>
+        <p class="benefit-desc">Processamento via SkalePay com criptografia total. Seus dados estão 100% protegidos.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+        <h3 class="benefit-title">ENTREGA IMEDIATA</h3>
+        <p class="benefit-desc">Gift card enviado automaticamente por e-mail em segundos após a confirmação do PIX.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+        <h3 class="benefit-title">SUPORTE 24H</h3>
+        <p class="benefit-desc">Nossa equipe está disponível todos os dias pelo Instagram para resolver qualquer dúvida.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><i class="fas fa-medal"></i></div>
+        <h3 class="benefit-title">MENOR PREÇO</h3>
+        <p class="benefit-desc">Garantimos o menor preço do mercado. Encontrou mais barato? A gente cobre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="garantia-section">
+  <div class="container">
+    <div class="garantia-card">
+      <div class="garantia-icon"><i class="fas fa-shield-alt"></i></div>
+      <h2 class="garantia-title">GARANTIA DE 7 DIAS</h2>
+      <p class="garantia-text">Se o código não funcionar, devolvemos 100% do seu dinheiro.<br>Sem burocracia, sem perguntas.</p>
+      <div class="garantia-selos">
+        <span><i class="fas fa-lock"></i> SSL Criptografado</span>
+        <span><i class="fas fa-check-circle"></i> Reembolso Garantido</span>
+        <span><i class="fas fa-shield-alt"></i> Compra Protegida</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">DÚVIDAS FREQUENTES</div>
+      <h2 class="section-title">PERGUNTAS <span>FREQUENTES</span></h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-question">É SEGURO COMPRAR AQUI? <span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim! Utilizamos a SkalePay como processadora de pagamentos, garantindo total segurança. O dinheiro só é liberado após a confirmação da entrega do produto. Já atendemos mais de 5.000 clientes com zero ocorrências.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">COMO RECEBO MEU PRODUTO? <span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Após confirmar o pagamento PIX, o gift card é enviado automaticamente para o seu e-mail em segundos. Você também pode visualizar o código na tela de confirmação da compra.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">QUANTO TEMPO LEVA O PIX? <span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">O PIX é instantâneo — geralmente menos de 1 minuto. Assim que confirmado, o produto é enviado automaticamente sem nenhuma ação manual.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">COMO RESGATAR OS ROBUX? <span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">1. Receba seu gift card no e-mail. 2. Acesse sua conta no Roblox. 3. Vá em "Resgatar Cartões". 4. Insira o código PIN. Os Robux caem direto na sua conta em segundos.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">E SE EU NÃO RECEBER? <span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Verifique sua pasta de spam. Se ainda assim não receber, entre em contato pelo nosso Instagram e resolveremos imediatamente — ou realizamos o reembolso integral sem burocracia.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo.jpg" alt="Robux VIP" class="footer-logo-img">
+        <p class="footer-about">A loja mais confiável para comprar Robux com o menor preço do Brasil. Entrega automática, pagamento seguro e suporte dedicado.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.com/" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="https://wa.me/5583996924986" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="footer-seguro">
+          <i class="fas fa-lock"></i> Conexão Segura SSL
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">NAVEGAÇÃO</div>
+        <div class="footer-links">
+          <a href="#produtos">Pacotes Robux</a>
+          <a href="#beneficios">Por que comprar</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#faq">Dúvidas frequentes</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">POLÍTICAS</div>
+        <div class="footer-links">
+          <a href="termos.html">Termos de uso</a>
+          <a href="privacidade.html">Política de privacidade</a>
+          <a href="reembolso.html">Política de reembolso</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">CONTATO</div>
+        <div class="footer-contact-item"><i class="fab fa-instagram"></i> @game_robux</div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i> suporte@recargabuxofc.com</div>
+        <div class="footer-contact-item"><i class="fas fa-clock"></i> Seg–Dom, 10h às 23h</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Robux VIP — Não afiliado à Roblox Corporation</p>
+      <div class="footer-pay">
+        <span style="font-size:0.68rem;color:var(--muted);margin-right:4px;">Aceito:</span>
+        <div class="pay-tag">PIX</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CHECKOUT MODAL -->
+<div id="modalCheckout" class="checkout-overlay" style="display:none;">
+  <div class="checkout-box">
+    <button class="checkout-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>
+
+    <!-- Step 1 -->
+    <div id="step1" class="checkout-step">
+
+      <!-- PAINEL ESQUERDO -->
+      <div class="checkout-painel-esq">
+        <div class="checkout-produto-img-wrap">
+          <img id="modalProdutoImg" src="" alt="Produto" class="checkout-produto-img">
+        </div>
+        <h2 class="checkout-product-title" id="modalProdutoNome"></h2>
+        <p class="checkout-delivery"><i class="fas fa-bolt"></i> ENTREGA AUTOMÁTICA VIA E-MAIL</p>
+        <div class="checkout-price" id="modalProdutoPreco"></div>
+
+        <div class="checkout-comparativo" id="checkoutComparativo">
+          <i class="fas fa-tag"></i> Na loja oficial: <strong id="comparativoValor"></strong> — Aqui você economiza!
+        </div>
+
+        <div class="checkout-qty-wrap">
+          <span class="checkout-qty-label">Quantidade</span>
+          <div class="checkout-qty-controls">
+            <button class="checkout-qty-btn" onclick="alterarQtd(-1)" id="qtyMinus">–</button>
+            <input type="number" id="inputQtd" class="checkout-qty-input" value="1" min="1" max="10" readonly>
+            <button class="checkout-qty-btn" onclick="alterarQtd(1)" id="qtyPlus">+</button>
+          </div>
+        </div>
+
+        <div class="checkout-total-wrap">
+          <span class="checkout-total-label">Total</span>
+          <span class="checkout-total-valor" id="modalTotalPreco"></span>
+        </div>
+
+        <div class="checkout-cupom-wrap" id="checkoutCupomWrap">
+          <input type="text" id="inputCupom" class="checkout-cupom-input" placeholder="Cupom de desconto">
+          <button class="checkout-cupom-btn" onclick="aplicarCupom()">APLICAR</button>
+        </div>
+        <div class="checkout-cupom-msg" id="cupomMsg"></div>
+      </div>
+
+      <!-- PAINEL DIREITO -->
+      <div class="checkout-painel-dir">
+        <div class="checkout-divider"></div>
+
+        <label class="checkout-label">Nome completo</label>
+        <input type="text" id="inputNome" class="checkout-input" placeholder="Ex: João Silva" autocomplete="name">
+
+        <label class="checkout-label">E-mail — você receberá o gift card aqui</label>
+        <input type="email" id="inputEmail" class="checkout-input" placeholder="seuemail@gmail.com" autocomplete="email">
+
+        <label class="checkout-label">Telefone (com DDD)</label>
+        <input type="tel" id="inputTelefone" class="checkout-input" placeholder="(11) 99999-9999" maxlength="15" autocomplete="tel" oninput="mascaraTelefone(this)">
+
+        <label class="checkout-checkbox-wrap">
+          <input type="checkbox" id="inputPromo" class="checkout-checkbox" checked>
+          <span class="checkout-checkbox-mark"><i class="fas fa-check"></i></span>
+          <span class="checkout-checkbox-text">Aceito receber informações de promoções e novidades</span>
+        </label>
+
+        <div class="checkout-selos-inline">
+          <span><i class="fas fa-shield-alt"></i> Criptografado</span>
+          <span><i class="fas fa-lock"></i> 100% Seguro</span>
+          <span><i class="fas fa-undo-alt"></i> Reembolso 7 dias</span>
+        </div>
+
+        <button class="checkout-btn-pagar" id="btnPagar" onclick="gerarPix()">
+          <i class="fas fa-qrcode"></i> GERAR PIX AGORA
+        </button>
+        <p class="checkout-seguro"><i class="fas fa-lock"></i> Pagamento 100% seguro · Processado pela SkalePay</p>
+        <div class="checkout-pay-row"><span>Aceito:</span><div class="checkout-pay-chip">PIX</div></div>
+      </div>
+
+    </div>
+
+    <!-- Step Etapas -->
+    <div id="stepPix" class="checkout-step" style="display:none;">
+      <div class="pix-anim-wrap">
+        <i class="fas fa-qrcode pix-anim-icon"></i>
+        <div class="pix-steps-list">
+          <div class="pix-step-item"><div class="pix-step-dot"></div><span class="pix-step-label">Validando seus dados...</span></div>
+          <div class="pix-step-item"><div class="pix-step-dot"></div><span class="pix-step-label">Gerando cobrança PIX...</span></div>
+          <div class="pix-step-item"><div class="pix-step-dot"></div><span class="pix-step-label">Preparando QR Code...</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step Ondas -->
+    <div id="stepOndas" class="checkout-step" style="display:none;">
+      <div class="ondas-wrap">
+        <div class="ondas-ring-wrap">
+          <div class="onda"></div><div class="onda"></div><div class="onda"></div>
+          <i class="fas fa-qrcode ondas-icon"></i>
+        </div>
+        <p class="ondas-txt">Conectando ao<br><strong>servidor PIX...</strong></p>
+      </div>
+    </div>
+
+    <!-- Step QR Code -->
+    <div id="step2" class="checkout-step" style="display:none;">
+      <h2 class="checkout-pix-title">PAGUE COM PIX</h2>
+      <p class="checkout-pix-sub">Escaneie o QR Code ou copie o código</p>
+      <div class="checkout-qr-card">
+        <img id="qrcodeImg" src="" alt="QR Code PIX" class="checkout-qr-img">
+        <div class="checkout-timer-row">
+          <i class="fas fa-clock"></i> Expira em <span id="checkoutTimer">29:59</span>
+        </div>
+      </div>
+      <div class="checkout-copia-card">
+        <div class="checkout-copia-lbl">PIX Copia e Cola</div>
+        <p id="pixCopiaCola" class="checkout-copia-code"></p>
+        <button class="checkout-btn-copy" onclick="copiarPix()">
+          <i class="fas fa-copy"></i> COPIAR CÓDIGO PIX
+        </button>
+      </div>
+      <div class="checkout-status">
+        <div class="checkout-pulse"></div>
+        <p>Aguardando pagamento... <strong id="checkoutValor"></strong></p>
+      </div>
+    </div>
+
+    <!-- Step Confirmado -->
+    <div id="step3" class="checkout-step" style="display:none;">
+      <div class="checkout-ok-wrap">
+        <div class="checkout-ok-ring"><i class="fas fa-check"></i></div>
+        <h2 class="checkout-ok-title">PAGAMENTO CONFIRMADO!</h2>
+        <p class="checkout-ok-sub">Seu gift card foi enviado.<br>Verifique sua caixa de entrada (e spam).</p>
+        <div class="checkout-ok-email"><i class="fas fa-envelope"></i> Gift card enviado para o seu e-mail</div>
+        <button class="checkout-btn-fechar" onclick="fecharModal()">FECHAR</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
