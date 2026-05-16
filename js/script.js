@@ -174,7 +174,6 @@ function copiarCupom() {
 
 /* ============================================
    CHAT AO VIVO — WebSocket + ID persistente
-   ⚠️ Troque pela URL do chat-admin quando hospedar
    ============================================ */
 (function() {
 
@@ -208,17 +207,18 @@ function copiarCupom() {
   const nomeSalvo   = getNomeSalvo();
 
   let chatAberto  = false;
-  let primeiraVez = !nomeSalvo; // Se já tem nome, não é primeira vez
+  let primeiraVez = !nomeSalvo;
   let nomeCliente = nomeSalvo;
   let socketChat  = null;
   let conectado   = false;
+  let msgNaoLidas = 0; // contador de mensagens não lidas
 
   // ── HTML DO CHAT ──
   const chatHTML = `
     <button class="chat-bubble-btn" id="chatBubbleBtn" onclick="toggleChat()" aria-label="Suporte ao vivo">
       <i class="fas fa-comment-dots chat-icon-msg"></i>
       <i class="fas fa-times chat-icon-x"></i>
-      <span class="chat-bubble-badge"></span>
+      <span class="chat-bubble-badge" id="chatBadge" style="display:none;"></span>
     </button>
 
     <div class="chat-window" id="chatWindow">
@@ -269,6 +269,21 @@ function copiarCupom() {
 
   document.body.insertAdjacentHTML('beforeend', chatHTML);
 
+  // ── BADGE — mostrar/esconder ──
+  function mostrarBadge(qtd) {
+    const badge = document.getElementById('chatBadge');
+    if (!badge) return;
+    badge.textContent = qtd > 9 ? '9+' : qtd;
+    badge.style.display = 'flex';
+  }
+
+  function esconderBadge() {
+    const badge = document.getElementById('chatBadge');
+    if (!badge) return;
+    badge.style.display = 'none';
+    msgNaoLidas = 0;
+  }
+
   // ── CONECTAR SOCKET ──
   function conectarSocket() {
     if (window.io) { iniciarSocket(); return; }
@@ -285,14 +300,11 @@ function copiarCupom() {
 
       socketChat.on('connect', () => {
         conectado = true;
-
-        // Envia uid + nome para o servidor reconhecer o cliente
         socketChat.emit('cliente:init', {
           uid:    clienteUID,
           nome:   nomeCliente || 'Visitante',
           pagina: window.location.pathname
         });
-
         const status = document.getElementById('chatStatusLabel');
         if (status) { status.textContent = 'Online agora'; status.style.color = ''; }
       });
@@ -306,7 +318,6 @@ function copiarCupom() {
         if (!msgs || !msgs.length) return;
         const container = document.getElementById('chatMsgs');
         if (!container) return;
-        // Limpa msgs de boas-vindas e renderiza histórico real
         container.innerHTML = '';
         msgs.forEach(msg => {
           if (msg.de === 'cliente') adicionarMsgCliente(msg.texto, msg.hora);
@@ -318,7 +329,17 @@ function copiarCupom() {
       socketChat.on('cliente:msg:suporte', (msg) => {
         esconderTyping();
         adicionarMsgSuporte(escapeHtml(msg.texto), msg.hora);
-        if (!chatAberto) toggleChat();
+
+        // Se o chat estiver fechado, mostra badge em vez de abrir
+        if (!chatAberto) {
+          msgNaoLidas++;
+          mostrarBadge(msgNaoLidas);
+
+          // Animação de pulso no botão
+          const btn = document.getElementById('chatBubbleBtn');
+          btn?.classList.add('tem-mensagem');
+          setTimeout(() => btn?.classList.remove('tem-mensagem'), 1000);
+        }
       });
 
       // Admin digitando
@@ -344,9 +365,11 @@ function copiarCupom() {
     btn.classList.toggle('aberto', chatAberto);
     win.classList.toggle('aberto', chatAberto);
 
+    // Ao abrir o chat, limpa o badge
     if (chatAberto) {
+      esconderBadge();
+
       if (primeiraVez) {
-        // Primeira vez — pede o nome
         primeiraVez = false;
         setTimeout(() => {
           adicionarMsgSuporte('Olá! 👋 Bem-vindo ao suporte da <strong>Robux VIP</strong>.<br>Como posso te ajudar hoje?');
@@ -357,7 +380,6 @@ function copiarCupom() {
           }, 800);
         }, 600);
       } else {
-        // Já tem nome — libera input direto
         document.getElementById('chatNomeWrap').style.display  = 'none';
         document.getElementById('chatInputWrap').style.display = 'flex';
         setTimeout(() => document.getElementById('chatInputEl')?.focus(), 300);
@@ -377,16 +399,13 @@ function copiarCupom() {
     }
 
     nomeCliente = nome;
-    salvarNome(nome); // Salva no localStorage
+    salvarNome(nome);
 
-    // Esconde input de nome, mostra input de mensagem
     document.getElementById('chatNomeWrap').style.display  = 'none';
     document.getElementById('chatInputWrap').style.display = 'flex';
 
-    // Mostra como msg do cliente
     adicionarMsgCliente(nome);
 
-    // Avisa servidor do nome real
     if (conectado && socketChat) {
       socketChat.emit('cliente:nome', { uid: clienteUID, nome });
     }
@@ -423,7 +442,6 @@ function copiarCupom() {
     if (conectado && socketChat) {
       socketChat.emit('cliente:msg', { uid: clienteUID, texto });
     } else {
-      // Fallback offline
       mostrarTyping();
       setTimeout(() => {
         esconderTyping();
