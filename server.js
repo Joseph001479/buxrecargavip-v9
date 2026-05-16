@@ -6,10 +6,12 @@
 
 const express = require('express');
 const cors    = require('cors');
+const path    = require('path');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '.')));
 
 // ⚠️ COLOQUE SUA CHAVE SECRETA AQUI (ou em variável de ambiente)
 const SECRET_KEY = process.env.SKALEPAY_SECRET_KEY;
