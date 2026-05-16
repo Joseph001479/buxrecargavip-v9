@@ -178,7 +178,7 @@ function copiarCupom() {
    ============================================ */
 (function() {
 
-  const CHAT_SERVER = 'http://localhost:4000';
+  const CHAT_SERVER = 'https://chat-admin-2v2j.onrender.com';
 
   const respostas_auto = [
     'Um momento, já estou verificando isso para você! 😊',
